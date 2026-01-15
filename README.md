@@ -69,11 +69,11 @@ has_compsys=1
 has_syntax_highlighting=1
 has_autosuggestions=1
 has_git_prompt=1
-first_prompt_lag_ms=921.084
-first_command_lag_ms=984.993
-command_lag_ms=167.072
-input_lag_ms=38.542
-exit_time_ms=659.415
+first_prompt_lag_ms=927.234
+first_command_lag_ms=991.820
+command_lag_ms=169.372
+input_lag_ms=33.578
+exit_time_ms=674.099
 ```
 
 ## Resources
