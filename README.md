@@ -1,6 +1,6 @@
 # zdotdir
 
-My `$ZDOTDIR` [dotfiles] directory, which contains my zsh configuration.
+My `$ZDOTDIR` [dotfiles] directory for Zsh on WSL Ubuntu. This repo started as a fork of [mattmc3's personal zdotdir](https://github.com/mattmc3/zdotdir) and is now tailored to my workflow.
 
 ## My Terminal
 
@@ -8,16 +8,16 @@ My `$ZDOTDIR` [dotfiles] directory, which contains my zsh configuration.
 
 ## My setup
 
-I like my Zsh to behave like [Fish][fish], so there's a lot of features that will be very familiar to other Fish users. I also like the basic plugin structure of [Oh-My-Zsh][oh-my-zsh], even if I'm not as big of a fan of OMZ itself. My Zsh has things like:
+I like my Zsh to behave like [Fish][fish], so there's a lot of features that will feel familiar to other Fish users. I also prefer the plugin structure of [Oh-My-Zsh][oh-my-zsh] without adopting OMZ wholesale. This setup focuses on a fast startup, good defaults, and a clean layout:
 
-- A functions directory for my custom functions
-- A completions directory for my custom completions
+- A functions directory for custom helpers
+- A completions directory for custom completions
 - A conf.d directory so that .zshrc isn't a cluttered mess
-- My custom plugins in a separate `$ZSH_CUSTOM` project similar to how OMZ works
+- A curated plugin list via Antidote and Zephyr
 
 ## Installation
 
-Since this is my personal `$ZDOTDIR`, this installation procedure is mostly for my personal use.
+Since this is my personal `$ZDOTDIR`, this installation procedure is mostly for my own use.
 
 It's a good idea to backup existing files first:
 
@@ -58,22 +58,22 @@ zsh
 
 A snappy shell is very important. I regularly run [zsh-bench](https://github.com/romkatv/zsh-bench) to make sure my shell feels snappy.
 
-The latest benchmark run shows that we load a new shell pretty fast.
+The latest benchmark run shows my current WSL setup.
 
 ```zsh
-% # ASUS S410 UN (2018): oh-my-posh prompt
+% # ASUS S410 UN (2018): WSL Ubuntu + oh-my-posh
 % zsh-bench
 ==> benchmarking login shell of user elingp ...
 creates_tty=0
 has_compsys=1
-has_syntax_highlighting=0
-has_autosuggestions=0
+has_syntax_highlighting=1
+has_autosuggestions=1
 has_git_prompt=1
-first_prompt_lag_ms=1054.843
-first_command_lag_ms=1105.862
-command_lag_ms=177.898
-input_lag_ms=41.846
-exit_time_ms=839.797
+first_prompt_lag_ms=921.084
+first_command_lag_ms=984.993
+command_lag_ms=167.072
+input_lag_ms=38.542
+exit_time_ms=659.415
 ```
 
 ## Resources
@@ -81,6 +81,7 @@ exit_time_ms=839.797
 - [fish][fish]
 - [antidote][antidote]
 - [zephyr][zephyr]
+- [oh-my-posh][oh-my-posh]
 - [zshzoo][zshzoo]
 - [zsh_unplugged][zsh_unplugged]
 - [prezto][prezto]
@@ -93,8 +94,8 @@ exit_time_ms=839.797
 [fish]: https://fishshell.com
 [dotfiles]: https://dotfiles.github.io/
 [homebrew]: https://brew.sh
-[iterm2-colors]: https://github.com/mbadolato/iTerm2-Color-Schemes
 [nerd-fonts]: https://github.com/ryanoasis/nerd-fonts
+[oh-my-posh]: https://github.com/JanDeDobbeleer/oh-my-posh
 [oh-my-zsh]: https://github.com/ohmyzsh/ohmyzsh
 [prezto]: https://github.com/sorin-ionescu/prezto
 [zephyr]: https://github.com/mattmc3/zephyr
