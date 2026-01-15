@@ -1,26 +1,26 @@
 # Terminal
 
 case "${TERM_PROGRAM:l}" in
-  apple_terminal)
-    export SHELL_SESSIONS_DISABLE=1
-    ;;
-  ghostty)
-    source ${GHOSTTY_RESOURCES_DIR}/shell-integration/zsh/ghostty-integration
-    ;;
   vscode)
     # https://code.visualstudio.com/docs/terminal/shell-integration
-    MY_HISTFILE=$HISTFILE
-    source "$(code --locate-shell-integration-path zsh)"
-    HISTFILE=$MY_HISTFILE
+    MY_HISTFILE=${HISTFILE-}
+
+    # Avoid spawning `code` on every shell start by caching the integration path.
+    if (( $+commands[code] )); then
+      _vscode_integration_cache="${ZSH_CACHE_DIR:-${XDG_CACHE_HOME:-$HOME/.cache}/zsh}/vscode-shell-integration-path"
+
+      if [[ -r "$_vscode_integration_cache" ]]; then
+        _vscode_integration_path="$(<"$_vscode_integration_cache")"
+      else
+        _vscode_integration_path="$(code --locate-shell-integration-path zsh 2>/dev/null)"
+        [[ -n "${_vscode_integration_path:-}" ]] && print -r -- "$_vscode_integration_path" >| "$_vscode_integration_cache"
+      fi
+
+      [[ -n "${_vscode_integration_path:-}" && -r "$_vscode_integration_path" ]] && source "$_vscode_integration_path"
+
+      unset _vscode_integration_cache _vscode_integration_path
+    fi
+    [[ -n ${MY_HISTFILE-} ]] && HISTFILE=$MY_HISTFILE
     unset MY_HISTFILE
-    ;;
-  wezterm)
-    source "$ZDOTDIR/lib/wezterm-shell-integration.sh"
-    function set_current_shell() {
-      __wezterm_set_user_var "TERM_CURRENT_SHELL" "zsh ${${ZSH_PATCHLEVEL:-$ZSH_VERSION}#zsh-}"
-    }
-    set_current_shell
-    autoload -Uz add-zsh-hook
-    add-zsh-hook precmd set_current_shell
     ;;
 esac

@@ -11,20 +11,33 @@
 
 # single character shortcuts - be sparing!
 alias _=sudo
-alias l=ls
 alias g=git
+
+# Prefer modern ls if installed.
+if (( $+commands[lsd] )); then
+    alias ls='lsd'
+    alias l='lsd -l'
+    alias la='lsd -a'
+    alias lla='lsd -la'
+    alias lt='lsd --tree'
+else
+    alias l=ls
+
+    # more ways to ls
+    alias ll='ls -lh'
+    alias la='ls -lAh'
+    alias lsa="ls -aG"
+    alias ldot='ls -ld .*'
+fi
 
 # mask built-ins with better defaults
 alias ping='ping -c 5'
-alias vi=vim
-alias nv=nvim
 alias grep="${aliases[grep]:-grep} --exclude-dir={.git,.vscode}"
 
-# more ways to ls
-alias ll='ls -lh'
-alias la='ls -lAh'
-alias lsa="ls -aG"
-alias ldot='ls -ld .*'
+# Prefer bat if installed.
+if (( $+commands[bat] )); then
+    alias cat='bat --style=plain --paging=never'
+fi
 
 # fix typos
 alias get=git
@@ -61,7 +74,7 @@ alias urlencode='python3 -c "import sys, urllib.parse as ul; \
 
 # misc
 alias please=sudo
-alias zshrc='${EDITOR:-vim} "${ZDOTDIR:-$HOME}"/.zshrc'
+alias zshrc='${EDITOR:-code} "${ZDOTDIR:-$HOME}"/.zshrc'
 alias zbench='for i in {1..10}; do /usr/bin/time zsh -lic exit; done'
 alias cls="clear && printf '\e[3J'"
 
@@ -70,9 +83,3 @@ alias print-fpath='for fp in $fpath; do echo $fp; done; unset fp'
 alias print-path='echo $PATH | tr ":" "\n"'
 alias print-functions='print -l ${(k)functions[(I)[^_]*]} | sort'
 
-# todo-txt
-alias t="todo.sh"
-alias todos="$VISUAL $HOME/Desktop/todo.txt"
-
-# auto-orient images based on exif tags
-alias autorotate="jhead -autorot"

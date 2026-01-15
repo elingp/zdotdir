@@ -7,18 +7,22 @@
 [[ "$ZPROFRC" -ne 1 ]] || zmodload zsh/zprof
 alias zprofrc="ZPROFRC=1 zsh"
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of .zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # Set Zsh location vars.
 ZSH_CONFIG_DIR="${ZDOTDIR:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}"
 ZSH_DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/zsh"
 ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
 mkdir -p $ZSH_CONFIG_DIR $ZSH_DATA_DIR $ZSH_CACHE_DIR
+
+# Linuxbrew/Homebrew (needed early for $HOMEBREW_PREFIX)
+if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
+# Some plugins generate completion files into this directory.
+mkdir -p "$ZSH_CACHE_DIR/completions"
+
+# Keep compdump machine-specific and out of $ZDOTDIR.
+ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump-${ZSH_VERSION}"
 
 # Set essential options
 setopt EXTENDED_GLOB INTERACTIVE_COMMENTS

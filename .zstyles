@@ -14,6 +14,7 @@ zstyle ':zephyr:plugin:*' 'use-cache' yes
 # Completions
 #
 
+zstyle ':plugin:ez-compinit' 'use-cache' yes
 zstyle ':zsh_custom:plugin:*' 'use-cache' no
 zstyle ':zsh_custom:plugin:completion' compstyle zshzoo
 
@@ -42,18 +43,10 @@ zstyle ':zsh_custom:plugin:editor:*' 'enabled' 'yes'
 # ZSH_CUSTOM features
 #
 
-# git
-zstyle ':zsh_custom:plugin:git' default-user mattmc3
-
 # zshrc.d location
 zstyle ':zsh_custom:plugin:zshrcd' directory $ZDOTDIR/conf.d
 
 # zfunctions location
 zstyle ':zsh_custom:plugin:zfunctions' directory $ZDOTDIR/functions
 
-#
-# Prompt
-#
 
-# Set prompt
-zstyle ':zephyr:plugin:prompt' theme p10k mmc

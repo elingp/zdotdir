@@ -7,7 +7,7 @@
 #
 
 mattmc3/zephyr path:plugins/environment
-mattmc3/zephyr path:plugins/homebrew conditional:is-macos
+mattmc3/zephyr path:plugins/homebrew
 
 #
 # History
@@ -37,10 +37,7 @@ $ZDOTDIR/lib/zsh-no-ps2.zsh
 # Prompts
 #
 
-sindresorhus/pure kind:fpath
-# romkatv/powerlevel10k kind:fpath
-# miekg/lean kind:fpath
-mattmc3/zephyr path:plugins/prompt
+# Prompt is configured in conf.d/prompt.zsh (oh-my-posh only).
 
 #
 # Clipboard
@@ -58,35 +55,40 @@ ohmyzsh/ohmyzsh path:plugins/copyfile
 mattmc3/zephyr path:plugins/color
 mattmc3/zephyr path:plugins/directory
 mattmc3/zephyr path:plugins/utility
-#mattmc3/zephyr path:plugins/zfunctions
 
 #
 # OMZ
 #
 
-ohmyzsh/ohmyzsh path:plugins/direnv
-ohmyzsh/ohmyzsh path:plugins/extract
+ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
+ohmyzsh/ohmyzsh path:plugins/bun
+ohmyzsh/ohmyzsh path:plugins/fzf
+ohmyzsh/ohmyzsh path:plugins/git
+ohmyzsh/ohmyzsh path:plugins/mise
+ohmyzsh/ohmyzsh path:plugins/uv
+
+# ohmyzsh/ohmyzsh path:plugins/docker-compose
+# ohmyzsh/ohmyzsh path:plugins/magic-enter
+# ohmyzsh/ohmyzsh path:plugins/docker
+# ohmyzsh/ohmyzsh path:plugins/npm
+# ohmyzsh/ohmyzsh path:plugins/python
+# ohmyzsh/ohmyzsh path:plugins/ssh
+# ohmyzsh/ohmyzsh path:plugins/sudo
+# ohmyzsh/ohmyzsh path:plugins/vscode
+# ohmyzsh/ohmyzsh path:plugins/ubuntu
 
 #
 # Utils
 #
 
 romkatv/zsh-bench kind:path
-# aloxaf/fzf-tab
-mattmc3/zman
-
-#
-# macOS
-#
-
-mattmc3/zephyr path:plugins/macos conditional:is-macos
+Aloxaf/fzf-tab
+djui/alias-tips
 
 #
 # Final
 #
 
-zdharma-continuum/fast-syntax-highlighting
-zsh-users/zsh-autosuggestions
-zsh-users/zsh-history-substring-search
-
-# vi: ft=properties
+zdharma-continuum/fast-syntax-highlighting kind:defer
+zsh-users/zsh-autosuggestions kind:defer
+zsh-users/zsh-history-substring-search kind:defer

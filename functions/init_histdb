@@ -1,4 +1,12 @@
 #!/bin/zsh
+
+# Keep histdb's sqlite DB in an XDG location by default.
+if [[ -z ${HISTDB_FILE-} ]]; then
+  HISTDB_FILE="${XDG_DATA_HOME:-$HOME/.local/share}/histdb/zsh-history.db"
+  export HISTDB_FILE
+fi
+mkdir -p -- "${HISTDB_FILE:h}"
+
 if is-macos; then
   HISTDB_TABULATE_CMD=(sed -e $'s/\x1f/\t/g')
 fi

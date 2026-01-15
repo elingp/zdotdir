@@ -61,63 +61,20 @@ A snappy shell is very important. I regularly run [zsh-bench](https://github.com
 The latest benchmark run shows that we load a new shell pretty fast.
 
 ```zsh
-% # MacBook Air (M3, 2024): starship prompt
+% # ASUS S410 UN (2018): oh-my-posh prompt
 % zsh-bench
-==> benchmarking login shell of user matt ...
+==> benchmarking login shell of user elingp ...
 creates_tty=0
 has_compsys=1
-has_syntax_highlighting=1
-has_autosuggestions=1
+has_syntax_highlighting=0
+has_autosuggestions=0
 has_git_prompt=1
-first_prompt_lag_ms=130.800
-first_command_lag_ms=139.313
-command_lag_ms=126.693
-input_lag_ms=11.314
-exit_time_ms=65.501
+first_prompt_lag_ms=1054.843
+first_command_lag_ms=1105.862
+command_lag_ms=177.898
+input_lag_ms=41.846
+exit_time_ms=839.797
 ```
-
-If you prefer a naive, completely meaningless Zsh 'exit' benchmark, I include that too for legacy reasons.
-
-```zsh
-% # MacBook Air (M3, 2024)
-% for i in {1..10}; do; /usr/bin/time zsh -lic exit; done
-        0.09 real         0.03 user         0.02 sys
-        0.07 real         0.02 user         0.01 sys
-        0.06 real         0.02 user         0.01 sys
-        0.07 real         0.02 user         0.01 sys
-        0.07 real         0.02 user         0.01 sys
-        0.06 real         0.02 user         0.01 sys
-        0.07 real         0.02 user         0.01 sys
-        0.07 real         0.02 user         0.01 sys
-        0.06 real         0.02 user         0.01 sys
-        0.07 real         0.02 user         0.01 sys
-```
-
-## Look-and-feel
-
-### Fonts
-
-Install [nerd fonts][nerd-fonts] via homebrew:
-
-```zsh
-brew tap homebrew/cask-fonts
-brew install --cask font-meslo-lg-nerd-font
-brew install --cask font-fira-code-nerd-font
-brew install --cask font-hack-nerd-font
-brew install --cask font-inconsolata-nerd-font
-brew install --cask font-sauce-code-pro-nerd-font
-```
-
-### Color schemes
-
-iTerm2 has some awesome [color schemes][iterm2-colors]. You can use them for more than
-just iTerm2.
-
-I use Space Gray:
-
-<p align="center">
-  <img alt="space gray" src="https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/screenshots/space_gray.png?raw=true"/>
-</p>
 
 ## Resources
 
@@ -140,10 +97,8 @@ I use Space Gray:
 [nerd-fonts]: https://github.com/ryanoasis/nerd-fonts
 [oh-my-zsh]: https://github.com/ohmyzsh/ohmyzsh
 [prezto]: https://github.com/sorin-ionescu/prezto
-[starship-toml]: https://github.com/mattmc3/zdotdir/blob/main/prompt/starship.toml
-[starship]: https://starship.rs
+[zephyr]: https://github.com/mattmc3/zephyr
 [supercharge-zsh]: https://blog.callstack.io/supercharge-your-terminal-with-zsh-8b369d689770
 [zdotdir_gif]: https://raw.githubusercontent.com/mattmc3/zdotdir/resources/img/zdotdir.gif
-[zephyr]: https://github.com/zshzoo/zephyr
 [zsh_unplugged]: https://github.com/mattmc3/zsh_unplugged
 [zshzoo]: https://github.com/zshzoo/zshzoo
