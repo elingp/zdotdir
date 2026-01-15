@@ -74,19 +74,6 @@ first_command_lag_ms=139.313
 command_lag_ms=126.693
 input_lag_ms=11.314
 exit_time_ms=65.501
-
-% # MacBook Air (M3, 2024): p10k prompt
-==> benchmarking login shell of user matt ...
-creates_tty=0
-has_compsys=1
-has_syntax_highlighting=1
-has_autosuggestions=1
-has_git_prompt=1
-first_prompt_lag_ms=13.365
-first_command_lag_ms=125.555
-command_lag_ms=47.757
-input_lag_ms=8.953
-exit_time_ms=70.038
 ```
 
 If you prefer a naive, completely meaningless Zsh 'exit' benchmark, I include that too for legacy reasons.
