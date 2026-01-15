@@ -61,21 +61,16 @@ mattmc3/zephyr path:plugins/utility
 #
 
 ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
+ohmyzsh/ohmyzsh path:plugins/sudo
 ohmyzsh/ohmyzsh path:plugins/bun
 ohmyzsh/ohmyzsh path:plugins/fzf
 ohmyzsh/ohmyzsh path:plugins/git
 ohmyzsh/ohmyzsh path:plugins/mise
+ohmyzsh/ohmyzsh path:plugins/ubuntu
 ohmyzsh/ohmyzsh path:plugins/uv
+ohmyzsh/ohmyzsh path:plugins/vscode
 
-# ohmyzsh/ohmyzsh path:plugins/docker-compose
-# ohmyzsh/ohmyzsh path:plugins/magic-enter
-# ohmyzsh/ohmyzsh path:plugins/docker
-# ohmyzsh/ohmyzsh path:plugins/npm
-# ohmyzsh/ohmyzsh path:plugins/python
 # ohmyzsh/ohmyzsh path:plugins/ssh
-# ohmyzsh/ohmyzsh path:plugins/sudo
-# ohmyzsh/ohmyzsh path:plugins/vscode
-# ohmyzsh/ohmyzsh path:plugins/ubuntu
 
 #
 # Utils
