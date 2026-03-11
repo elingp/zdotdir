@@ -83,3 +83,7 @@ alias print-fpath='for fp in $fpath; do echo $fp; done; unset fp'
 alias print-path='echo $PATH | tr ":" "\n"'
 alias print-functions='print -l ${(k)functions[(I)[^_]*]} | sort'
 
+# bindkeys
+bindkey '^[[3;5~' kill-word # Ctrl+Delete
+bindkey '^H' backward-kill-word # Ctrl+Backspace
+# bindkey '^[^H' backward-kill-word # Ctrl+Backspace
