@@ -17,7 +17,7 @@ fi
 
 # Antidote tuning
 zstyle ':antidote:bundle' use-friendly-names 'yes'
-zstyle ':antidote:plugin:*' defer-options '-p'
+zstyle ':antidote:bundle:*' defer-options '-p'
 zstyle ':antidote:*' zcompile 'yes'
 
 # Generate a static plugin load file only when the source .txt changes.
