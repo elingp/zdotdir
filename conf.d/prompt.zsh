@@ -8,19 +8,18 @@ setopt prompt_subst transient_rprompt
 # Prefer oh-my-posh if available.
 if (( $+commands[oh-my-posh] )); then
   _omp_theme=${POSH_THEME_NAME:-ys}
+  _omp_themes_dir=${POSH_THEMES_PATH:-${HOMEBREW_PREFIX:+$HOMEBREW_PREFIX/opt/oh-my-posh/share/oh-my-posh/themes}}
+  _omp_config=
 
-  # Avoid spawning `brew` during shell init; prefer HOMEBREW_PREFIX.
-  if [[ -z "${POSH_THEMES_PATH:-}" && -n "${HOMEBREW_PREFIX:-}" ]]; then
-    POSH_THEMES_PATH="$HOMEBREW_PREFIX/opt/oh-my-posh/share/oh-my-posh/themes"
-  fi
+  [[ -n "$_omp_themes_dir" ]] && _omp_config="$_omp_themes_dir/$_omp_theme.omp.json"
 
-  if [[ -n "${POSH_THEMES_PATH:-}" && -r "$POSH_THEMES_PATH/$_omp_theme.omp.json" ]]; then
-    eval "$(oh-my-posh init zsh --config "$POSH_THEMES_PATH/$_omp_theme.omp.json")"
+  if [[ -n "$_omp_config" && -r "$_omp_config" ]]; then
+    eval "$(oh-my-posh init zsh --config "$_omp_config")"
   else
     eval "$(oh-my-posh init zsh)"
   fi
 
-  unset _omp_theme
+  unset _omp_theme _omp_themes_dir _omp_config
 else
   # Minimal fallback prompt if oh-my-posh isn't installed.
   PROMPT='%n@%m:%~%# '
