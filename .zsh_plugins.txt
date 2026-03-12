@@ -75,6 +75,7 @@ ohmyzsh/ohmyzsh path:plugins/vscode
 romkatv/zsh-bench kind:path
 Aloxaf/fzf-tab
 djui/alias-tips
+mattmc3/zsh_custom path:plugins/git-cmds
 
 #
 # Final
