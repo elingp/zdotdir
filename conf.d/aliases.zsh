@@ -32,6 +32,8 @@ fi
 
 # mask built-ins with better defaults
 alias ping='ping -c 5'
+alias vi=vim
+alias nv=nvim
 alias grep="${aliases[grep]:-grep} --exclude-dir={.git,.vscode}"
 
 # Prefer bat if installed.
