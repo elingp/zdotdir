@@ -81,6 +81,6 @@ mattmc3/zsh_custom path:plugins/git-cmds
 # Final
 #
 
-zdharma-continuum/fast-syntax-highlighting
+# zdharma-continuum/fast-syntax-highlighting
 zsh-users/zsh-autosuggestions
-zsh-users/zsh-history-substring-search
+# zsh-users/zsh-history-substring-search

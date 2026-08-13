@@ -1,11 +1,7 @@
 #
-# python - Aliases and functions for python
+# Python aliases and functions
 #
 
-# workon
-export WORKON_HOME="${WORKON_HOME:-${XDG_DATA_HOME:-$HOME/.local/share}/venvs}"
-
-# python aliases
 alias py3='python3'
 alias py='python'
 alias pip3update="pip3 list --outdated | cut -d ' ' -f1 | xargs -n1 pip3 install -U"

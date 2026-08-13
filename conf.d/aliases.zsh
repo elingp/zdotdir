@@ -29,6 +29,11 @@ else
     alias lsa="ls -aG"
     alias ldot='ls -ld .*'
 fi
+if (( ${+commands[eza]} )); then
+  alias ls=eza
+  [[ -d ${XDG_CONFIG_HOME:-$HOME/.config}/eza ]] && \
+    export EZA_CONFIG_DIR=${XDG_CONFIG_HOME:-$HOME/.config}/eza
+fi
 
 # mask built-ins with better defaults
 alias ping='ping -c 5'
@@ -84,6 +89,29 @@ alias cls="clear && printf '\e[3J'"
 alias print-fpath='for fp in $fpath; do echo $fp; done; unset fp'
 alias print-path='echo $PATH | tr ":" "\n"'
 alias print-functions='print -l ${(k)functions[(I)[^_]*]} | sort'
+
+# directory
+alias -g ..2="../.."
+alias -g ..3="../../.."
+alias -g ..4="../../../.."
+alias -g ..5="../../../../.."
+alias -g ..6="../../../../../.."
+alias -g ..7="../../../../../../.."
+alias -g ..8="../../../../../../../.."
+alias -g ..9="../../../../../../../../.."
+
+# Set the initial working directory so we can easily return to it.
+: ${IWD:=$PWD}
+alias iwd='cd $IWD'
+
+# dotfiles
+: ${DOTFILES:=$HOME/.dotfiles}
+alias dotf='cd "$DOTFILES"'
+alias dotfed='cd "$DOTFILES" && ${VISUAL:-${EDITOR:-vim}} .'
+alias dotfl="cd \$DOTFILES/local"
+alias fdot='cd ${XDG_CONFIG_HOME:-$HOME/.config}/fish'
+alias fconf=fdot
+alias zdot='cd $ZDOTDIR'
 
 # bindkeys
 bindkey '^[[3;5~' kill-word # Ctrl+Delete
