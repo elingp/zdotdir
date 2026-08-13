@@ -7,9 +7,4 @@ if ! (( $+commands[fzf] )); then
   return 1
 fi
 
-# https://github.com/ajeetdsouza/fzf
-if (( $+functions[cached-eval] )); then
-  cached-eval 'fzf-zsh' fzf --zsh
-else
-  source <(fzf --zsh)
-fi
+source <(fzf --zsh)
