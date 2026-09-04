@@ -113,6 +113,9 @@ function zcompiledir {
     done
   else
     for f in "$1"/**/*.zsh{,-theme}; do
+      if [[ -f "${f}.zwc" ]] && ! zcompile -t "${f}.zwc" &>/dev/null; then
+        command rm -f "${f}.zwc" "${f}.zwc.old"
+      fi
       echo "compiling $f" && zrecompile -pq "$f"
     done
   fi

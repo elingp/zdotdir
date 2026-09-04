@@ -30,6 +30,12 @@ if [[ ! -r "$_zsh_plugins_zsh" || ! "$_zsh_plugins_zsh" -nt "$_zsh_plugins_txt" 
   antidote bundle <"$_zsh_plugins_txt" >| "$_zsh_plugins_zsh"
 fi
 
+# If the compiled .zwc file is incompatible with the current Zsh version,
+# remove it so zrecompile can cleanly recompile without warning to stderr.
+if [[ -f "${_zsh_plugins_zsh}.zwc" ]] && ! zcompile -t "${_zsh_plugins_zsh}.zwc" &>/dev/null; then
+  rm -f "${_zsh_plugins_zsh}.zwc" "${_zsh_plugins_zsh}.zwc.old"
+fi
+
 source "$_zsh_plugins_zsh"
 
 unset _antidote_root _zsh_plugins_txt _zsh_plugins_zsh
