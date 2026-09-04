@@ -37,8 +37,9 @@ for _fndir in $ZSH_CONFIG_DIR/functions(/FN) $ZSH_CONFIG_DIR/functions/*(/FN); d
 done
 unset _fndir
 
-# Set any zstyles you might use for configuration.
-[[ -r $ZSH_CONFIG_DIR/.zstyles ]] && source $ZSH_CONFIG_DIR/.zstyles
+# Set the styles
+[[ -r $ZDOTDIR/.zstyles ]] \
+ && . $ZDOTDIR/.zstyles
 
 # Create an amazing Zsh config using antidote plugins.
 source $ZSH_CONFIG_DIR/lib/antidote.zsh
@@ -55,8 +56,8 @@ unset _rc
 [[ "$PWD" != "/" ]] || cd
 
 # Local settings
-[ -r $HOME/.local/config/zsh/.zshrc.local ] \
-&& . $HOME/.local/config/zsh/.zshrc.local
+[[ -r $HOME/.local/config/zsh/.zshrc.local ]] \
+ && . $HOME/.local/config/zsh/.zshrc.local
 
 # Finish profiling by calling zprof.
 [[ "$ZPROFRC" -eq 1 ]] && zprof

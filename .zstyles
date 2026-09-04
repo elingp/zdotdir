@@ -38,3 +38,16 @@ zstyle ':zephyr:plugin:editor' key-bindings 'vi'
 # Enable some opt-in features.
 zstyle ':zephyr:plugin:editor' magic-enter yes
 zstyle ':zephyr:plugin:editor' dot-expansion yes
+
+# History
+zstyle ':zephyr:plugin:history' 'use-xdg-basedirs' 'yes'
+zstyle ':zephyr:plugin:history:aux:sqlite' enable yes
+zstyle ':zephyr:plugin:history:aux:json'   enable yes
+
+#
+# XDG base dirs
+#
+
+# Apps are opt-in. Run xdgbasedir to see what is on, what is available, and
+# what is still waiting on a move.
+zstyle ':use-xdg-basedirs:(gpg|java|kubectl|node|python3|rg|screen|wget)' enabled yes

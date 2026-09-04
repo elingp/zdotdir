@@ -1,5 +1,5 @@
 # SQLite history
-cached-eval histdb init zsh
+# cached-eval histdb init zsh
 # syntax highlighting
 cached-eval zsh-patina activate
 # cd replacement
