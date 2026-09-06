@@ -29,6 +29,8 @@ zstyle ':z1:editor:default-command' git-command 'git status -sb'
 # enter doesn't create PS2, but instead inserts newlines until the command is runnable
 zstyle ':z1:editor' accept-line-or-newline true
 
+zstyle ':z1:editor:*' cursor 'none'
+
 # If we use the Z1 prompt, uncomment this
 # zstyle ':z1:prompt' transient 'yes'
 
