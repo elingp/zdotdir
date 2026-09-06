@@ -1,41 +1,28 @@
-#
-# Antidote
-#
-
-_antidote_root="${HOMEBREW_PREFIX:-/home/linuxbrew/.linuxbrew}/opt/antidote/share/antidote"
-
-if [[ -r "$_antidote_root/functions/antidote" ]]; then
-  fpath=("$_antidote_root/functions" $fpath)
-  autoload -Uz antidote
-elif [[ -r "$_antidote_root/antidote.zsh" ]]; then
-  source "$_antidote_root/antidote.zsh"
-else
-  print -u2 -- "antidote: not found at $_antidote_root"
-  unset _antidote_root
-  return 0
+# Locate antidote: prefer Homebrew, fall back to $ZDOTDIR/.antidote
+antidote_dir=${HOMEBREW_PREFIX:-/home/linuxbrew/.linuxbrew}/opt/antidote/share/antidote
+if [[ ! -d $antidote_dir ]]; then
+  antidote_dir=${ZDOTDIR:-$HOME}/.antidote
+  [[ -d $antidote_dir ]] || git clone --depth=1 https://github.com/mattmc3/antidote $antidote_dir
 fi
 
-# Antidote tuning
-zstyle ':antidote:bundle' use-friendly-names 'yes'
-zstyle ':antidote:bundle:*' defer-options '-p'
-zstyle ':antidote:*' zcompile 'yes'
+# Lazy-load antidote from its functions directory
+fpath=($antidote_dir/functions $fpath)
+autoload -Uz antidote
 
-# Generate a static plugin load file only when the source .txt changes.
-_zsh_plugins_txt="${ZDOTDIR:-$HOME}/.zsh_plugins.txt"
-_zsh_plugins_zsh="${ZDOTDIR:-$HOME}/.zsh_plugins.zsh"
-
-[[ -f "$_zsh_plugins_txt" ]] || touch "$_zsh_plugins_txt"
-
-if [[ ! -r "$_zsh_plugins_zsh" || ! "$_zsh_plugins_zsh" -nt "$_zsh_plugins_txt" ]]; then
-  antidote bundle <"$_zsh_plugins_txt" >| "$_zsh_plugins_zsh"
+# Generate a new static file whenever .zsh_plugins.txt is updated
+zsh_plugins=${ZDOTDIR:-$HOME}/.zsh_plugins
+[[ -f ${zsh_plugins}.txt ]] || touch ${zsh_plugins}.txt
+if [[ ! ${zsh_plugins}.zsh -nt ${zsh_plugins}.txt ]]; then
+  antidote bundle <${zsh_plugins}.txt >|${zsh_plugins}.zsh
 fi
 
-# If the compiled .zwc file is incompatible with the current Zsh version,
-# remove it so zrecompile can cleanly recompile without warning to stderr.
-if [[ -f "${_zsh_plugins_zsh}.zwc" ]] && ! zcompile -t "${_zsh_plugins_zsh}.zwc" &>/dev/null; then
-  rm -f "${_zsh_plugins_zsh}.zwc" "${_zsh_plugins_zsh}.zwc.old"
+# Remove incompatible .zwc if Zsh version changed
+if [[ -f ${zsh_plugins}.zsh.zwc ]] && ! zcompile -t ${zsh_plugins}.zsh.zwc &>/dev/null; then
+  rm -f ${zsh_plugins}.zsh.zwc ${zsh_plugins}.zsh.zwc.old
 fi
 
-source "$_zsh_plugins_zsh"
+# Source your static plugins file
+source ${zsh_plugins}.zsh
 
-unset _antidote_root _zsh_plugins_txt _zsh_plugins_zsh
+# Clean up
+unset antidote_dir zsh_plugins
