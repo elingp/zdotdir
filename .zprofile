@@ -2,13 +2,6 @@
 
 typeset -gUa path fpath prepath
 
-# XDG
-export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
-export XDG_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}
-export XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}
-export XDG_STATE_HOME=${XDG_STATE_HOME:-$HOME/.local/state}
-export XDG_PROJECTS_DIR=${XDG_PROJECTS_DIR:-$HOME/projects}
-
 # Apps
 export EDITOR=code
 export VISUAL=code
@@ -16,12 +9,18 @@ export PAGER=less
 export SHELL_SESSIONS_DISABLE=1
 
 # Ensure gpg-agent can prompt for passphrases correctly.
-export GPG_TTY="$(tty 2>/dev/null)"
+export GPG_TTY=$TTY
+
+# Setup Homebrew / Linuxbrew if installed
+if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+elif [[ -x /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 # Set the path elements that should always be first
 prepath=(
   $HOME/bin(N)
-  /opt/homebrew/bin(N)
   $HOME/.local/bin(N)
 )
 path=( $prepath $path )

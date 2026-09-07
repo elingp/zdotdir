@@ -7,11 +7,6 @@
 [[ "$ZPROFRC" -ne 1 ]] || zmodload zsh/zprof
 alias zprofrc="ZPROFRC=1 zsh"
 
-# Linuxbrew/Homebrew (needed early for $HOMEBREW_PREFIX)
-if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
-
 # Set the styles
 [[ -r $ZDOTDIR/.zstyles ]] \
  && . $ZDOTDIR/.zstyles
