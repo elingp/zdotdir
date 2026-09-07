@@ -1,6 +1,6 @@
 # zdotdir
 
-My `$ZDOTDIR` [dotfiles] directory for Zsh on WSL Ubuntu. This repo started as a fork of [mattmc3's personal zdotdir](https://github.com/mattmc3/zdotdir) and is now tailored to my workflow.
+My `$ZDOTDIR` [dotfiles] directory for Zsh on WSL Ubuntu. This repo started as a clone of [mattmc3's personal zdotdir](https://github.com/mattmc3/zdotdir) and is now tailored to my workflow.
 
 ## My Terminal
 
